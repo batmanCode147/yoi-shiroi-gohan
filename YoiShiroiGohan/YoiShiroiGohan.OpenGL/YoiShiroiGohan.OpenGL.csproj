@@ -131,6 +131,22 @@
   <Import Project="..\YoiShiroiGohan.Shared\YoiShiroiGohan.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>@echo off
+
+set account=the-pigeon-protocol
+set project=yoi-shiroi-gohan
+set channel=linux-mac-universal
+
+set configuration=$(ConfigurationName)
+rem "Release"
+set solutionDir=$(SolutionDir)
+rem Directory of solution.sln
+set targetDir=$(TargetDir)
+rem Directory where build is located, probably Release folder
+
+call %25solutionDir%25ButlerPush.bat %25account%25 %25project%25 %25channel%25 %25configuration%25 %25solutionDir%25 %25targetDir%25</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
