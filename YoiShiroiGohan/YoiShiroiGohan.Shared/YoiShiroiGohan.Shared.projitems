@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>3bc43114-acfb-4678-814c-09a76d9af183</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>YoiShiroiGohan.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+    <None Include="$(MSBuildThisFileDirectory)Content\Fonts\PixelFont.spritefont" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\bg_music.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\bg_music2.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\boss_bullet.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\boss_die.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\boss_power.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\fly_sound.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\hit_damage.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\jump.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\menu_select.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\player_die.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\player_shoot.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\player_shoot2.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\powerup.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Audio\win_firework.wav" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Fonts\ThaleahFat.ttf" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\background.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\background_clouds.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\boss-sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\boss_bomb_sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\boss_fireball_sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\boss_sprite_sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\btn-template.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\easteregg.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\gameover_card.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\ground_cloud.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\heart.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\hitbox.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\menu_background.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\option_card.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\pause_card.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\plate_cloud.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\plattform.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\player-Sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\player_big_gun_sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\player_bullet_sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\player_fireball_sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\player_idle_jump-Sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\player_progress_sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\plyer_progress.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\powerup_heart.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\powerup_ricebowl.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\powerup_sushi.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\projectile.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\test-Sheet.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\title-template.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\win_card.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\win_plane.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Main.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Components\Animation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Components\Button.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Components\GameObject.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Components\Hitbox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Components\Projectile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Components\SoundItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Components\State.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Components\TextLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\GameStates\CreditsState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\GameStates\GameOverState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\GameStates\MenuState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\GameStates\OptionState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\GameStates\PauseState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\GameStates\TutorialState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\GameStates\WinState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Manager\AnimationManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Manager\CollisionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Engine\Manager\InputManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Boss\Boss.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Boss\BossBomb.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Boss\BossBullet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Globals.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Objects\Background.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Objects\Ground.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Objects\Platform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Objects\PowerUp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Player\Player.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Player\PlayerBigBullet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\Player\PlayerBullet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\World\World.cs" />
+  </ItemGroup>
+</Project>
