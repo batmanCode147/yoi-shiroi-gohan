@@ -74,7 +74,7 @@ call git branch --show-current | find /v "" | findstr /r /c:"^master$" > nul & i
     echo "BUTLER ON MASTER"
     if %configuration% == Release (
         echo "BUTLER PUSHING"
-        7z.exe a %targetDir%..\%project%.zip %targetDir%*
+        %solutionDir%7z.exe a %targetDir%..\%project%.zip %targetDir%*
         butler.exe push %targetDir%..\%project%.zip %account%/%project%:%channel%
     )
 )
