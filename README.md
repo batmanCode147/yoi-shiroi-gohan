@@ -1,11 +1,11 @@
 ### MMP1 Project Repository
 
-# Controlls Gamepad
+# Controls Gamepad
 A - Jump  
 L2 - Shoot  
 Left / Right - Move  
 
-# Controlls Keyboard
+# Controls Keyboard
 A / D - Move  
 Space - Jump  
 Right Alt - Shoot  
