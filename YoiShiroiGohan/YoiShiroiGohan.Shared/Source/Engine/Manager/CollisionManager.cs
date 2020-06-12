@@ -121,7 +121,7 @@ namespace YoiShiroiGohan
         {
             foreach (var proj in playerBullets)
             {
-                if (CheckCollision(boss.Bounds, proj.Bounds) && boss.CurrentAttack != BossAttack.Spawn)
+                if (CheckCollision(boss.Bounds, proj.Bounds) && boss.CurrentAttack != BossAttack.Spawn && boss.IsAlive)
                 {
                     Projectile projectile = (Projectile)proj;
 

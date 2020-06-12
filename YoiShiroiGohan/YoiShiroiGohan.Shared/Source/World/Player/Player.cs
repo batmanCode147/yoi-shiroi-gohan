@@ -154,6 +154,9 @@ namespace YoiShiroiGohan
         {
             switch (PlayerState)
             {
+                case Anim.Hit:
+                    animationManager.PlayAnimation(animation, Anim.Hit);
+                    break;
                 case Anim.Idle:
                     animationManager.PlayAnimation(animation, Anim.Idle);
                     break;
@@ -346,6 +349,7 @@ namespace YoiShiroiGohan
         {
             Health--;
             hit_sound.PlaySound();
+            PlayerState = Anim.Hit;
         }
 
         private void OnDie()

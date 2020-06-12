@@ -36,7 +36,8 @@ namespace YoiShiroiGohan
         Level1,
         Level2,
         Level3,
-        Dead
+        Dead,
+        Hit
     }
 
     public class Boss : ICollidable
@@ -166,6 +167,9 @@ namespace YoiShiroiGohan
         {
             switch (CurrentState)
             {
+                case BossState.Hit:
+                    animationManager.PlayAnimation(animation, Anim.Hit);
+                    break;
                 case BossState.Level1:
                     animationManager.PlayAnimation(animation, Anim.Idle);
                     break;
@@ -315,7 +319,7 @@ namespace YoiShiroiGohan
         #region Events
         public void OnCollision()
         {
-            //TODO: make this useful
+            CurrentState = BossState.Hit;
         }
 
         private void OnDie()
