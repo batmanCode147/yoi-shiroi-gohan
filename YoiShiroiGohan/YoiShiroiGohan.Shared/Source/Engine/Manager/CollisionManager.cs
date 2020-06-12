@@ -43,8 +43,22 @@ namespace YoiShiroiGohan
 
         private static bool isCollided = false;
 
+        // IFRAME 
+        private static TimeSpan iframeTimer = TimeSpan.Zero;
+        private static double iFrameRate = 0.5;
+        private static bool inIFrame = false;
+
         public static void Update()
         {
+            if(inIFrame)
+                iframeTimer += Globals.gameTime.ElapsedGameTime;
+
+            if (iframeTimer > TimeSpan.FromSeconds(iFrameRate))
+            {
+                inIFrame = false;
+                iframeTimer = TimeSpan.Zero;
+            }
+
             WorldConstraints();
             PlateCollision();
             BossCollision();
@@ -117,9 +131,10 @@ namespace YoiShiroiGohan
                 }
             }
 
-            if (CheckCollision(player.Bounds, boss.Bounds) && !isCollided && player.IsAlive)
+            if (CheckCollision(player.Bounds, boss.Bounds) && !isCollided && player.IsAlive && !inIFrame)
             {
                 isCollided = true;
+                inIFrame = true;
                 player.OnCollision();
             }
             
@@ -149,23 +164,25 @@ namespace YoiShiroiGohan
         {
             foreach (var proj in bossBombs)
             {
-                if (CheckCollision(player.Bounds, proj.Bounds) && player.IsAlive)
+                if (CheckCollision(player.Bounds, proj.Bounds) && player.IsAlive && !inIFrame)
                 {
                     Projectile projectile = (Projectile)proj;
 
                     projectile.OnCollision();
                     player.OnCollision();
+                    inIFrame = true;
                 }
             }
 
             foreach (var proj in bossBullets)
             {
-                if (CheckCollision(player.Bounds, proj.Bounds) && player.IsAlive)
+                if (CheckCollision(player.Bounds, proj.Bounds) && player.IsAlive && !inIFrame)
                 {
                     Projectile projectile = (Projectile)proj;
 
                     projectile.OnCollision();
                     player.OnCollision();
+                    inIFrame = true;
                 }
             }
         }
