@@ -30,6 +30,11 @@ namespace YoiShiroiGohan
 
         }
 
+        public Hitbox(string path, Rectangle Bounds) : this(path, new Vector2(Bounds.X, Bounds.Y), new Vector2(Bounds.Width, Bounds.Height))
+        { 
+            
+        }
+
         public override void Update()
         {
             base.Update();
