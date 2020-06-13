@@ -57,7 +57,19 @@ namespace YoiShiroiGohan
         private float speed = 3f;
         private float amplitute = 6f;
 
-        public Rectangle Bounds { get { return new Rectangle((int)position.X, (int)position.Y, (int)dimension.X, (int)dimension.Y); } }
+        public Rectangle Bounds
+        {
+            get
+            {
+                int hitboxOffset = 30;
+                int x = (int)position.X + hitboxOffset;
+                int y = (int)position.Y + hitboxOffset;
+                int width = (int)dimension.X - hitboxOffset * 2;
+                int height = (int)dimension.Y - hitboxOffset * 2;
+                return new Rectangle(x, y, width, height);
+            }
+            set {; }
+        }
 
         public BossAttack CurrentAttack { get; private set; }
         public BossState CurrentState { get; private set; }
@@ -83,6 +95,8 @@ namespace YoiShiroiGohan
         public int MaxHealth { get; set; } = Globals.BOSS_HEALTH;
         public int Health { get; set; }
 
+        //private Hitbox hitbox;
+
         public Boss(Vector2 position, Vector2 dimension)
         {
             fly_sound = new SoundItem("Audio\\fly_sound", 0.5f, false);
@@ -103,6 +117,8 @@ namespace YoiShiroiGohan
             bullets = new List<ICollidable>();
 
             Health = MaxHealth;
+
+            //hitbox = new Hitbox("Images\\hitbox", Bounds);
         }
 
         public void Update()
@@ -142,11 +158,13 @@ namespace YoiShiroiGohan
 
             prevPos += velocity;
             position = prevPos;
+            //hitbox.position = new Vector2(Bounds.X, Bounds.Y);
         }
 
         public void Draw()
         {
             animationManager.Draw(position);
+            //hitbox.Draw();
 
             foreach (var b in bombs)
             {
