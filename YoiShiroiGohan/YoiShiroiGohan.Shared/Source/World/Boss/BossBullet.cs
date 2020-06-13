@@ -44,7 +44,6 @@ namespace YoiShiroiGohan
         public override void OnCollision()
         {
             IsVisible = false;
-
         }
     }
 }

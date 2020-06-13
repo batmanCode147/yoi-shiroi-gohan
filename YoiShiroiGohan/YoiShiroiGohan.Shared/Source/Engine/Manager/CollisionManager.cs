@@ -86,7 +86,6 @@ namespace YoiShiroiGohan
                         if (player.Health < player.MaxHealth)
                         { 
                             player.Health++;
-                            Console.WriteLine("HEALTH UP");
                         }
                         break;
                     case Powerup.BigGun:
@@ -153,7 +152,9 @@ namespace YoiShiroiGohan
                     {
                         if (CheckCollision(proj.Bounds, item.Bounds))
                         {
-                            item.OnCollision();
+                            BossBomb b = (BossBomb) item;
+                            b.OnShootCollision();
+                            proj.OnCollision();
                         }
                     }
                 }

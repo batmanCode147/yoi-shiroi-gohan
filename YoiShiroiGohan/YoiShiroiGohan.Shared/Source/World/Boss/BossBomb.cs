@@ -28,7 +28,7 @@ namespace YoiShiroiGohan
     {
         private Vector2 prevPos;
         private float Amplitute { get; set; }
-        private int Health { get; set; } = 20;
+        private int Health { get; set; } = Globals.BOSS_BOMB_HEALTH;
         //private Hitbox hitbox;
         public new Rectangle Bounds
         {
@@ -76,6 +76,10 @@ namespace YoiShiroiGohan
         public override void OnCollision()
         {
             IsVisible = false;
+        }
+
+        public void OnShootCollision()
+        {
             Health--;
         }
     }
