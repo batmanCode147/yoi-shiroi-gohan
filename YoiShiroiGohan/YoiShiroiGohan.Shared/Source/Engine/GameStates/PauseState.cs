@@ -31,7 +31,6 @@ namespace YoiShiroiGohan
             Menu
         }
 
-        private List<Button> buttons;
         private Button continueBtn;
         private Button menuBtn;
         private GameObject bg_card;
@@ -56,6 +55,8 @@ namespace YoiShiroiGohan
 
         public override void Update()
         {
+            base.Update();
+
             GetInput();
             currentSelected = (SelectedPauseBtn)menuNum;
 
@@ -65,34 +66,11 @@ namespace YoiShiroiGohan
             }
 
             buttons[menuNum].Color = new Color(237, 71, 86);
-
-            foreach (var b in background)
-            {
-                b.Update();
-            }
         }
 
         public override void GetInput()
         {
-            InputManager input = Globals.inputManager;
-
-            if (input.ButtonPressed(Buttons.DPadLeft) || input.KeyPressed(Keys.A))
-            {
-                if (menuNum > 0)
-                {
-                    menuNum--;
-                    menu_sound.PlaySound();
-                }
-            }
-
-            if (input.ButtonPressed(Buttons.DPadRight) || input.KeyPressed(Keys.D))
-            {
-                if (menuNum < buttons.Count - 1)
-                {
-                    menuNum++;
-                    menu_sound.PlaySound();
-                }
-            }
+            base.GetInput();
 
             if (input.ButtonPressed(Buttons.A) || input.KeyPressed(Keys.Enter))
             {
@@ -117,10 +95,7 @@ namespace YoiShiroiGohan
 
         public override void Draw()
         {
-            foreach (var b in background)
-            {
-                b.Draw();
-            }
+            base.Draw();
 
             bg_card.Draw();
 

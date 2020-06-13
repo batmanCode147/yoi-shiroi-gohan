@@ -316,6 +316,7 @@ namespace YoiShiroiGohan
 
         private void GetBack()
         {
+            // TODO: make this pretty(BERNI!)
             velocity = Vector2.Zero;
 
             if (prevPos.X > startPos.X)
