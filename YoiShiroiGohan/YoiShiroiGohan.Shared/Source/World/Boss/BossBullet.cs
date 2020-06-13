@@ -26,12 +26,8 @@ namespace YoiShiroiGohan
 {
     public class BossBullet : Projectile, ICollidable
     {
-        private SoundItem hit_sound;
-
         public BossBullet(string path, Vector2 position, Vector2 dimension, Vector2 velocity, int speed) : base(path, position, dimension, velocity, speed)
         {
-            hit_sound = new SoundItem("Audio\\player_shoot", 0.02f, false);
-            hit_sound.PlaySound();
             animation.flip = true;
         }
 
@@ -48,7 +44,7 @@ namespace YoiShiroiGohan
         public override void OnCollision()
         {
             IsVisible = false;
-            hit_sound.PlaySound();
+
         }
     }
 }

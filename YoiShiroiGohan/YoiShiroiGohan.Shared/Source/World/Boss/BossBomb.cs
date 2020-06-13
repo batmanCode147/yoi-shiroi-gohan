@@ -26,8 +26,6 @@ namespace YoiShiroiGohan
 {
     public class BossBomb : Projectile, ICollidable
     {
-        private SoundItem bomb_sound;
-
         private Vector2 prevPos;
         private float Amplitute { get; set; }
         private int Health { get; set; } = 20;
@@ -48,8 +46,6 @@ namespace YoiShiroiGohan
 
         public BossBomb(string path, Vector2 position, Vector2 dimension, Vector2 velocity, int speed) : base(path, position, dimension, velocity, speed)
         {
-            bomb_sound = new SoundItem("Audio\\boss_bullet", 0.1f, false);
-            bomb_sound.PlaySound();
             Amplitute = Globals.random.Next(5, 13);
             Speed = Globals.random.Next(3, 7);
 

@@ -48,6 +48,8 @@ namespace YoiShiroiGohan
         private SoundItem fly_sound;
         private SoundItem power_sound;
         private SoundItem die_sound;
+        private SoundItem bullet_sound;
+        private SoundItem bomb_sound;
 
         private Vector2 position;
         private Vector2 dimension;
@@ -102,6 +104,8 @@ namespace YoiShiroiGohan
             fly_sound = new SoundItem("Audio\\fly_sound", 0.5f, false);
             power_sound = new SoundItem("Audio\\boss_power", 0.5f, false);
             die_sound = new SoundItem("Audio\\boss_die", 1f, false);
+            bullet_sound = new SoundItem("Audio\\player_shoot", 0.02f, false);
+            bomb_sound = new SoundItem("Audio\\boss_bullet", 0.1f, false);
 
             animationManager = new AnimationManager();
             animation = new Animation("Images\\boss_sprite_sheet", dimension, 100f, true);
@@ -123,7 +127,6 @@ namespace YoiShiroiGohan
 
         public void Update()
         {
-            Console.WriteLine("Boss Health: " + Health);
             UpdateBossState();
 
             if (IsAlive)
@@ -377,7 +380,10 @@ namespace YoiShiroiGohan
             );
 
             if (bombs.Count < 1)
+            {
                 bombs.Add(bomb);
+                bomb_sound.PlaySound();
+            }
         }
 
         private void ShootBullets()
@@ -390,7 +396,10 @@ namespace YoiShiroiGohan
             );
 
             if (bullets.Count < 1)
+            {
                 bullets.Add(bullet);
+                bullet_sound.PlaySound();
+            }
         }
     }
     #endregion

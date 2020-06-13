@@ -172,6 +172,7 @@ namespace YoiShiroiGohan
         }
     }
 
+    //TODO: check if you can remove this
     //#region program class
     //#if WINDOWS || LINUX
     //    public static class Program
