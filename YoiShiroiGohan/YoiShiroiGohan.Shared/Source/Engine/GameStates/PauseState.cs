@@ -44,7 +44,7 @@ namespace YoiShiroiGohan
             continueBtn = new Button("Continue", "Fonts\\PixelFont", "Images\\btn-template", new Vector2(250, 450+offset), new Vector2(210, 100));
             menuBtn = new Button("Menu", "Fonts\\PixelFont", "Images\\btn-template", new Vector2(550, 450+offset), new Vector2(200, 100));
 
-            title = new GameObject("Images\\pause_card", new Vector2(202, 100), new Vector2(621, 179));
+            title = new GameObject("Images\\pause_card", new Vector2(162, 73), new Vector2(700, 209));
             bg_card = new GameObject("Images\\tutorial", new Vector2(201, 270), new Vector2(621, 260));
 
             this.buttons = new List<Button>()
