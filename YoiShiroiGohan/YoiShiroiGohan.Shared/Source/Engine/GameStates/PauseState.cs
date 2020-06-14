@@ -35,6 +35,7 @@ namespace YoiShiroiGohan
         private Button menuBtn;
         private GameObject title;
         private GameObject bg_card;
+        private Texture2D overlay;
 
         SelectedPauseBtn currentSelected;
 
@@ -46,6 +47,7 @@ namespace YoiShiroiGohan
 
             title = new GameObject("Images\\pause_card", new Vector2(162, 73), new Vector2(700, 209));
             bg_card = new GameObject("Images\\tutorial", new Vector2(201, 270), new Vector2(621, 260));
+            overlay = Globals.Content.Load<Texture2D>("Images\\pause_overlay");
 
             this.buttons = new List<Button>()
             {
@@ -96,6 +98,12 @@ namespace YoiShiroiGohan
 
         public override void Draw()
         {
+            Globals.spriteBatch.Draw(
+                overlay,
+                new Rectangle(0, 0, Globals.WindowWidth, Globals.WindowHeight),
+                new Color(Color.White, 0.5f)
+            );
+
             bg_card.Draw();
 
             title.Draw();
