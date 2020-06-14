@@ -48,8 +48,6 @@ namespace YoiShiroiGohan
             if (input.ButtonPressed(Buttons.A) || input.KeyPressed(Keys.Enter))
             {
                 menu_sound.PlaySound();
-
-                Console.WriteLine("Options");
                 Main.CurrenGameState = GameState.Options;
             }
         }

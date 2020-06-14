@@ -125,11 +125,9 @@ namespace YoiShiroiGohan
                 switch (currentSelected)
                 {
                     case SelectedOptionBtn.Back:
-                        Console.WriteLine("Back");
                         Main.CurrenGameState = GameState.Menu;
                         break;
                     case SelectedOptionBtn.Save:
-                        Console.WriteLine("Save");
                         Main.CurrenGameState = GameState.Menu;
                         break;
                     case SelectedOptionBtn.Mute:
@@ -169,11 +167,9 @@ namespace YoiShiroiGohan
                         }
                         break;
                     case SelectedOptionBtn.Credits:
-                        Console.WriteLine("Credits");
                         Main.CurrenGameState = GameState.Credits;
                         break;
                     case SelectedOptionBtn.Tutorial:
-                        Console.WriteLine("Tutorial");
                         Main.CurrenGameState = GameState.Tutorial;
                         break;
                     default:

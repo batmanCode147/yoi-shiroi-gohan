@@ -96,11 +96,9 @@ namespace YoiShiroiGohan
                 switch (currentSelected)
                 {
                     case SelectedWinBtn.PlayAgain:
-                        Console.WriteLine("New Game");
                         Main.CurrenGameState = GameState.NewGame;
                         break;
                     case SelectedWinBtn.Menu:
-                        Console.WriteLine("Menu");
                         Main.NewGame();
                         Main.CurrenGameState = GameState.Menu;
                         break;

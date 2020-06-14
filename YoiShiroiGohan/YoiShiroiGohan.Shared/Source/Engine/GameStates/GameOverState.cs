@@ -86,12 +86,10 @@ namespace YoiShiroiGohan
                 switch (currentSelected)
                 {
                     case SelectedGameOverBtn.PlayAgain:
-                        Console.WriteLine("New Game");
                         player_progress.position = player_progress.StartPos;
                         Main.CurrenGameState = GameState.NewGame;
                         break;
                     case SelectedGameOverBtn.Menu:
-                        Console.WriteLine("Menu");
                         player_progress.position = player_progress.StartPos;
                         Main.NewGame();
                         Main.CurrenGameState = GameState.Menu;

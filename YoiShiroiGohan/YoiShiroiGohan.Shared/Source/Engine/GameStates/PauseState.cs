@@ -82,11 +82,9 @@ namespace YoiShiroiGohan
                 switch (currentSelected)
                 {
                     case SelectedPauseBtn.Continue:
-                        Console.WriteLine("Continue");
                         Main.CurrenGameState = GameState.Playing;
                         break;
                     case SelectedPauseBtn.Menu:
-                        Console.WriteLine("Menu");
                         Main.NewGame();
                         Main.CurrenGameState = GameState.Menu;
                         break;

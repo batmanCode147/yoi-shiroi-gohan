@@ -95,15 +95,12 @@ namespace YoiShiroiGohan
                 switch (currentSelected)
                 {
                     case SelectedMenuBtn.Start:
-                        Console.WriteLine("Game Starts");
                         Main.CurrenGameState = GameState.Playing;
                         break;
                     case SelectedMenuBtn.Options:
-                        Console.WriteLine("Options");
                         Main.CurrenGameState = GameState.Options;
                         break;
                     case SelectedMenuBtn.Quit:
-                        Console.WriteLine("Quit");
                         Main.CurrenGameState = GameState.Quit;
                         break;
                     default:

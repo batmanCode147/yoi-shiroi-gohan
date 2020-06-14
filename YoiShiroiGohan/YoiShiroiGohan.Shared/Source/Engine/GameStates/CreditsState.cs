@@ -45,36 +45,25 @@ namespace YoiShiroiGohan
 
         public override void Update()
         {
+            base.Update();
             GetInput();
 
             backBtn.Update();
             backBtn.Color = new Color(237, 71, 86);
-
-            foreach (var b in background)
-            {
-                b.Update();
-            }
         }
 
         public override void GetInput()
         {
-            InputManager input = Globals.inputManager;
-
             if (input.ButtonPressed(Buttons.A) || input.KeyPressed(Keys.Enter))
             {
                 menu_sound.PlaySound();
-
-                Console.WriteLine("Options");
                 Main.CurrenGameState = GameState.Options;
             }
         }
 
         public override void Draw()
         {
-            foreach (var b in background)
-            {
-                b.Draw();
-            }
+            base.Draw();
 
             bg_card.Draw();
             credits.Draw();
