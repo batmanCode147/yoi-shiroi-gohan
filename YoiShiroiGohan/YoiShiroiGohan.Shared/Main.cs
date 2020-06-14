@@ -141,6 +141,7 @@ namespace YoiShiroiGohan
                     option.Draw();
                     break;
                 case GameState.Pause:
+                    world.Draw();
                     pause.Draw();
                     break;
                 case GameState.Quit:

@@ -27,32 +27,24 @@ namespace YoiShiroiGohan
     {
         private Button backBtn;
         private GameObject bg_card;
-        private TextLabel title;
 
         public TutorialState()
         {
-            title = new TextLabel("Under Construction", "Fonts\\PixelFont", new Vector2((Globals.WindowWidth / 2)-200, 220), 1f, Color.White);
             backBtn = new Button("Back", "Fonts\\PixelFont", "Images\\btn-template", new Vector2((Globals.WindowWidth / 2) - (210 / 2), 450), new Vector2(210, 100));
-            bg_card = new GameObject("Images\\option_card", new Vector2(176, 100), new Vector2(671, 310));
+            bg_card = new GameObject("Images\\tutorial", new Vector2(176, 100), new Vector2(671, 310));
         }
 
         public override void Update()
         {
+            base.Update();
             GetInput();
 
             backBtn.Update();
             backBtn.Color = new Color(237, 71, 86);
-
-            foreach (var b in background)
-            {
-                b.Update();
-            }
         }
 
         public override void GetInput()
         {
-            InputManager input = Globals.inputManager;
-
             if (input.ButtonPressed(Buttons.A) || input.KeyPressed(Keys.Enter))
             {
                 menu_sound.PlaySound();
@@ -64,14 +56,9 @@ namespace YoiShiroiGohan
 
         public override void Draw()
         {
-            foreach (var b in background)
-            {
-                b.Draw();
-            }
-
+            base.Draw();
             bg_card.Draw();
             backBtn.Draw();
-            title.Draw();
         }
     }
 }

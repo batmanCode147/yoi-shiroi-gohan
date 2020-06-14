@@ -33,16 +33,19 @@ namespace YoiShiroiGohan
 
         private Button continueBtn;
         private Button menuBtn;
+        private GameObject title;
         private GameObject bg_card;
 
         SelectedPauseBtn currentSelected;
 
         public PauseState()
         {
-            continueBtn = new Button("Continue", "Fonts\\PixelFont", "Images\\btn-template", new Vector2(250, 450), new Vector2(210, 100));
-            menuBtn = new Button("Menu", "Fonts\\PixelFont", "Images\\btn-template", new Vector2(550, 450), new Vector2(200, 100));
+            int offset = 125;
+            continueBtn = new Button("Continue", "Fonts\\PixelFont", "Images\\btn-template", new Vector2(250, 450+offset), new Vector2(210, 100));
+            menuBtn = new Button("Menu", "Fonts\\PixelFont", "Images\\btn-template", new Vector2(550, 450+offset), new Vector2(200, 100));
 
-            bg_card = new GameObject("Images\\pause_card", new Vector2(176, 100), new Vector2(671, 294));
+            title = new GameObject("Images\\pause_card", new Vector2(202, 100), new Vector2(621, 179));
+            bg_card = new GameObject("Images\\tutorial", new Vector2(201, 270), new Vector2(621, 260));
 
             this.buttons = new List<Button>()
             {
@@ -95,9 +98,9 @@ namespace YoiShiroiGohan
 
         public override void Draw()
         {
-            base.Draw();
-
             bg_card.Draw();
+
+            title.Draw();
 
             foreach (var button in buttons)
             {

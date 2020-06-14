@@ -61,6 +61,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\projectile.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\test-Sheet.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\title-template.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\tutorial.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\win_card.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\win_plane.png" />
   </ItemGroup>
