@@ -172,19 +172,4 @@ namespace YoiShiroiGohan
             world = new World();
         }
     }
-
-    //TODO: check if you can remove this
-    //#region program class
-    //#if WINDOWS || LINUX
-    //    public static class Program
-    //    {
-    //        [STAThread]
-    //        static void Main()
-    //        {
-    //            using (var game = new Main())
-    //                game.Run();
-    //        }
-    //    }
-    //#endif
-    //#endregion
 }
