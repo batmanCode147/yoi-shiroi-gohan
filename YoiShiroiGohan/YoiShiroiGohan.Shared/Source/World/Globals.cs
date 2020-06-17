@@ -31,6 +31,8 @@ namespace YoiShiroiGohan
         public static ContentManager Content;
         public static SpriteBatch spriteBatch;
         public static GameTime gameTime;
+
+        //TODO: make two global inputmanager for multiplayer support
         public static InputManager inputManager = new InputManager();
 
         //TODO: Ask about Random not being fucking random...
