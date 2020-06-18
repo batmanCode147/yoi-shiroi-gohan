@@ -104,7 +104,7 @@ namespace YoiShiroiGohan
                     break;
             }
 
-            position = new Vector2(Globals.WindowWidth + 300, rand.Next(100, Globals.WindowHeight - 100));
+            position = new Vector2(Globals.WindowWidth + 300, rand.Next(100, Globals.WindowHeight - 150));
             setTimer = false;
         }
 

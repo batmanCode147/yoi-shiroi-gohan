@@ -46,6 +46,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\menu_background.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\option_card.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\pause_card.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\pause_overlay.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\plate_cloud.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\plattform.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\player-Sheet.png" />
@@ -61,6 +62,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\projectile.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\test-Sheet.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\title-template.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Content\Images\tutorial.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\win_card.png" />
     <Content Include="$(MSBuildThisFileDirectory)Content\Images\win_plane.png" />
   </ItemGroup>

@@ -31,19 +31,23 @@ namespace YoiShiroiGohan
             Menu
         }
 
-        private List<Button> buttons;
         private Button continueBtn;
         private Button menuBtn;
+        private GameObject title;
         private GameObject bg_card;
+        private Texture2D overlay;
 
         SelectedPauseBtn currentSelected;
 
         public PauseState()
         {
-            continueBtn = new Button("Continue", "Fonts\\PixelFont", "Images\\btn-template", new Vector2(250, 450), new Vector2(210, 100));
-            menuBtn = new Button("Menu", "Fonts\\PixelFont", "Images\\btn-template", new Vector2(550, 450), new Vector2(200, 100));
+            int offset = 125;
+            continueBtn = new Button("Continue", "Fonts\\PixelFont", "Images\\btn-template", new Vector2(250, 450+offset), new Vector2(210, 100));
+            menuBtn = new Button("Menu", "Fonts\\PixelFont", "Images\\btn-template", new Vector2(550, 450+offset), new Vector2(200, 100));
 
-            bg_card = new GameObject("Images\\pause_card", new Vector2(176, 100), new Vector2(671, 294));
+            title = new GameObject("Images\\pause_card", new Vector2(162, 73), new Vector2(700, 209));
+            bg_card = new GameObject("Images\\tutorial", new Vector2(201, 270), new Vector2(621, 260));
+            overlay = Globals.Content.Load<Texture2D>("Images\\pause_overlay");
 
             this.buttons = new List<Button>()
             {
@@ -56,6 +60,8 @@ namespace YoiShiroiGohan
 
         public override void Update()
         {
+            base.Update();
+
             GetInput();
             currentSelected = (SelectedPauseBtn)menuNum;
 
@@ -65,34 +71,11 @@ namespace YoiShiroiGohan
             }
 
             buttons[menuNum].Color = new Color(237, 71, 86);
-
-            foreach (var b in background)
-            {
-                b.Update();
-            }
         }
 
         public override void GetInput()
         {
-            InputManager input = Globals.inputManager;
-
-            if (input.ButtonPressed(Buttons.DPadLeft) || input.KeyPressed(Keys.A))
-            {
-                if (menuNum > 0)
-                {
-                    menuNum--;
-                    menu_sound.PlaySound();
-                }
-            }
-
-            if (input.ButtonPressed(Buttons.DPadRight) || input.KeyPressed(Keys.D))
-            {
-                if (menuNum < buttons.Count - 1)
-                {
-                    menuNum++;
-                    menu_sound.PlaySound();
-                }
-            }
+            base.GetInput();
 
             if (input.ButtonPressed(Buttons.A) || input.KeyPressed(Keys.Enter))
             {
@@ -101,11 +84,9 @@ namespace YoiShiroiGohan
                 switch (currentSelected)
                 {
                     case SelectedPauseBtn.Continue:
-                        Console.WriteLine("Continue");
                         Main.CurrenGameState = GameState.Playing;
                         break;
                     case SelectedPauseBtn.Menu:
-                        Console.WriteLine("Menu");
                         Main.NewGame();
                         Main.CurrenGameState = GameState.Menu;
                         break;
@@ -117,12 +98,15 @@ namespace YoiShiroiGohan
 
         public override void Draw()
         {
-            foreach (var b in background)
-            {
-                b.Draw();
-            }
+            Globals.spriteBatch.Draw(
+                overlay,
+                new Rectangle(0, 0, Globals.WindowWidth, Globals.WindowHeight),
+                new Color(Color.White, 0.5f)
+            );
 
             bg_card.Draw();
+
+            title.Draw();
 
             foreach (var button in buttons)
             {

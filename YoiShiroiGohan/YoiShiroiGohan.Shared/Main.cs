@@ -141,6 +141,7 @@ namespace YoiShiroiGohan
                     option.Draw();
                     break;
                 case GameState.Pause:
+                    world.Draw();
                     pause.Draw();
                     break;
                 case GameState.Quit:
@@ -171,18 +172,4 @@ namespace YoiShiroiGohan
             world = new World();
         }
     }
-
-    //#region program class
-    //#if WINDOWS || LINUX
-    //    public static class Program
-    //    {
-    //        [STAThread]
-    //        static void Main()
-    //        {
-    //            using (var game = new Main())
-    //                game.Run();
-    //        }
-    //    }
-    //#endif
-    //#endregion
 }

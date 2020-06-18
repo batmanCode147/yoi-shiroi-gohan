@@ -35,7 +35,6 @@ namespace YoiShiroiGohan
             Mute
         }
 
-        private List<Button> buttons;
         private List<TextLabel> labels;
         
         private TextLabel muteLabel;
@@ -97,6 +96,8 @@ namespace YoiShiroiGohan
 
         public override void Update()
         {
+            base.Update();
+
             GetInput();
             currentSelected = (SelectedOptionBtn)menuNum;
 
@@ -111,53 +112,11 @@ namespace YoiShiroiGohan
             }
 
             buttons[menuNum].Color = new Color(237, 71, 86);
-
-            foreach (var b in background)
-            {
-                b.Update();
-            }
         }
 
         public override void GetInput()
         {
-            InputManager input = Globals.inputManager;
-
-            if (input.ButtonPressed(Buttons.DPadLeft) || input.KeyPressed(Keys.A))
-            {
-                if (menuNum > 0)
-                {
-                    menuNum--;
-                    menu_sound.PlaySound();
-                }
-            }
-
-            if (input.ButtonPressed(Buttons.DPadRight) || input.KeyPressed(Keys.D))
-            {
-                if (menuNum < buttons.Count - 1)
-                {
-                    menuNum++;
-                    menu_sound.PlaySound();
-                }
-            }
-
-
-            if (input.ButtonPressed(Buttons.DPadDown) || input.KeyPressed(Keys.S))
-            {
-                if (menuNum > 0)
-                {
-                    menuNum--;
-                    menu_sound.PlaySound();
-                }
-            }
-
-            if (input.ButtonPressed(Buttons.DPadUp) || input.KeyPressed(Keys.W))
-            {
-                if (menuNum < buttons.Count - 1)
-                {
-                    menuNum++;
-                    menu_sound.PlaySound();
-                }
-            }
+            base.GetInput();
 
             if (input.ButtonPressed(Buttons.A) || input.KeyPressed(Keys.Enter))
             {
@@ -166,11 +125,9 @@ namespace YoiShiroiGohan
                 switch (currentSelected)
                 {
                     case SelectedOptionBtn.Back:
-                        Console.WriteLine("Back");
                         Main.CurrenGameState = GameState.Menu;
                         break;
                     case SelectedOptionBtn.Save:
-                        Console.WriteLine("Save");
                         Main.CurrenGameState = GameState.Menu;
                         break;
                     case SelectedOptionBtn.Mute:
@@ -210,11 +167,9 @@ namespace YoiShiroiGohan
                         }
                         break;
                     case SelectedOptionBtn.Credits:
-                        Console.WriteLine("Credits");
                         Main.CurrenGameState = GameState.Credits;
                         break;
                     case SelectedOptionBtn.Tutorial:
-                        Console.WriteLine("Tutorial");
                         Main.CurrenGameState = GameState.Tutorial;
                         break;
                     default:
@@ -225,10 +180,7 @@ namespace YoiShiroiGohan
 
         public override void Draw()
         {
-            foreach (var b in background)
-            {
-                b.Draw();
-            }
+            base.Draw();
 
             bg_card.Draw();
 

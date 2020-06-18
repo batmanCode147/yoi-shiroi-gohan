@@ -43,8 +43,22 @@ namespace YoiShiroiGohan
 
         private static bool isCollided = false;
 
+        // IFRAME 
+        private static TimeSpan iframeTimer = TimeSpan.Zero;
+        private static double iFrameRate = 0.5;
+        private static bool inIFrame = false;
+
         public static void Update()
         {
+            if(inIFrame)
+                iframeTimer += Globals.gameTime.ElapsedGameTime;
+
+            if (iframeTimer > TimeSpan.FromSeconds(iFrameRate))
+            {
+                inIFrame = false;
+                iframeTimer = TimeSpan.Zero;
+            }
+
             WorldConstraints();
             PlateCollision();
             BossCollision();
@@ -72,7 +86,6 @@ namespace YoiShiroiGohan
                         if (player.Health < player.MaxHealth)
                         { 
                             player.Health++;
-                            Console.WriteLine("HEALTH UP");
                         }
                         break;
                     case Powerup.BigGun:
@@ -107,7 +120,7 @@ namespace YoiShiroiGohan
         {
             foreach (var proj in playerBullets)
             {
-                if (CheckCollision(boss.Bounds, proj.Bounds) && boss.CurrentAttack != BossAttack.Spawn)
+                if (CheckCollision(boss.Bounds, proj.Bounds) && boss.CurrentAttack != BossAttack.Spawn && boss.IsAlive)
                 {
                     Projectile projectile = (Projectile)proj;
 
@@ -117,9 +130,10 @@ namespace YoiShiroiGohan
                 }
             }
 
-            if (CheckCollision(player.Bounds, boss.Bounds) && !isCollided && player.IsAlive)
+            if (CheckCollision(player.Bounds, boss.Bounds) && !isCollided && player.IsAlive && !inIFrame)
             {
                 isCollided = true;
+                inIFrame = true;
                 player.OnCollision();
             }
             
@@ -138,7 +152,9 @@ namespace YoiShiroiGohan
                     {
                         if (CheckCollision(proj.Bounds, item.Bounds))
                         {
-                            item.OnCollision();
+                            BossBomb b = (BossBomb) item;
+                            b.OnShootCollision();
+                            proj.OnCollision();
                         }
                     }
                 }
@@ -149,23 +165,25 @@ namespace YoiShiroiGohan
         {
             foreach (var proj in bossBombs)
             {
-                if (CheckCollision(player.Bounds, proj.Bounds) && player.IsAlive)
+                if (CheckCollision(player.Bounds, proj.Bounds) && player.IsAlive && !inIFrame)
                 {
                     Projectile projectile = (Projectile)proj;
 
                     projectile.OnCollision();
                     player.OnCollision();
+                    inIFrame = true;
                 }
             }
 
             foreach (var proj in bossBullets)
             {
-                if (CheckCollision(player.Bounds, proj.Bounds) && player.IsAlive)
+                if (CheckCollision(player.Bounds, proj.Bounds) && player.IsAlive && !inIFrame)
                 {
                     Projectile projectile = (Projectile)proj;
 
                     projectile.OnCollision();
                     player.OnCollision();
+                    inIFrame = true;
                 }
             }
         }
