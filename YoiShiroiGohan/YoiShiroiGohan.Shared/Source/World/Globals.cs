@@ -31,6 +31,8 @@ namespace YoiShiroiGohan
         public static ContentManager Content;
         public static SpriteBatch spriteBatch;
         public static GameTime gameTime;
+
+        //TODO: make two global inputmanager for multiplayer support
         public static InputManager inputManager = new InputManager();
 
         //TODO: Ask about Random not being fucking random...
@@ -67,6 +69,7 @@ namespace YoiShiroiGohan
         public static int BOSS_HEALTH = 500;
         public static int BOSS_HARDMODE_HEALTH = 1000;
         public const int BOSS_DEATH_DELAY = 5;
+        public static int BOSS_BOMB_HEALTH = 3;
         #endregion
 
         #region GAME SETTINGS

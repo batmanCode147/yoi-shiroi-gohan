@@ -27,7 +27,8 @@ namespace YoiShiroiGohan
         Idle,
         Jump,
         Dead,
-        Chill
+        Chill,
+        Hit
     }
     public class AnimationManager
     {
@@ -36,6 +37,8 @@ namespace YoiShiroiGohan
         private int frameIndex;
         private float timer;
         private Anim anim;
+
+        public Color Color { get; set; } = Color.White;
 
         public Animation Animation { get { return animation; } }
         public int FrameIndex { get; set; }
@@ -81,7 +84,16 @@ namespace YoiShiroiGohan
                 timer = 0f;
             }
 
-            sourceRect = new Rectangle((int)frameIndex * Animation.FrameWidth, (int)anim * Animation.FrameHeight, Animation.FrameWidth, Animation.FrameHeight);
+            if (anim != Anim.Hit)
+            {
+                sourceRect = new Rectangle((int)frameIndex * Animation.FrameWidth, (int)anim * Animation.FrameHeight, Animation.FrameWidth, Animation.FrameHeight);
+                Color = Color.White;
+            }
+            else
+            {
+                sourceRect = new Rectangle(0, 0, 0, 0);
+                Color = Color.BlueViolet;
+            }
 
             SpriteEffects flip = (Animation.flip) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
@@ -89,7 +101,7 @@ namespace YoiShiroiGohan
                 Animation.Texture,
                 position,
                 sourceRect,
-                Color.White,
+                Color,
                 0f,
                 Origin,
                 Animation.Scale,

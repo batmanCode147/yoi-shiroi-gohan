@@ -32,7 +32,6 @@ namespace YoiShiroiGohan
         }
 
         private TextLabel copyright;
-        private List<Button> buttons;
         private Button startBtn;
         private Button optionBtn;
         private Button quitBtn;
@@ -66,6 +65,8 @@ namespace YoiShiroiGohan
 
         public override void Update()
         {
+            base.Update();
+
             GetInput();
             currentSelected = (SelectedMenuBtn)menuNum;
 
@@ -76,11 +77,6 @@ namespace YoiShiroiGohan
 
             buttons[menuNum].Color = new Color(237, 71, 86);
 
-            foreach (var b in background)
-            {
-                b.Update();
-            }
-
             easterEgg.Update();
             if (estEgg >= 3)
             {
@@ -90,25 +86,7 @@ namespace YoiShiroiGohan
 
         public override void GetInput()
         {
-            InputManager input = Globals.inputManager;
-
-            if (input.ButtonPressed(Buttons.DPadLeft) || input.KeyPressed(Keys.A))
-            {
-                if (menuNum > 0)
-                {
-                    menuNum--;
-                    menu_sound.PlaySound();
-                }
-            }
-
-            if (input.ButtonPressed(Buttons.DPadRight) || input.KeyPressed(Keys.D))
-            {
-                if (menuNum < buttons.Count - 1)
-                { 
-                    menuNum++;
-                    menu_sound.PlaySound();
-                }
-            }
+            base.GetInput();
 
             if (input.ButtonPressed(Buttons.A) || input.KeyPressed(Keys.Enter))
             {
@@ -117,15 +95,12 @@ namespace YoiShiroiGohan
                 switch (currentSelected)
                 {
                     case SelectedMenuBtn.Start:
-                        Console.WriteLine("Game Starts");
                         Main.CurrenGameState = GameState.Playing;
                         break;
                     case SelectedMenuBtn.Options:
-                        Console.WriteLine("Options");
                         Main.CurrenGameState = GameState.Options;
                         break;
                     case SelectedMenuBtn.Quit:
-                        Console.WriteLine("Quit");
                         Main.CurrenGameState = GameState.Quit;
                         break;
                     default:
@@ -141,10 +116,7 @@ namespace YoiShiroiGohan
 
         public override void Draw()
         {
-            foreach (var b in background)
-            {
-                b.Draw();
-            }
+            base.Draw();
 
             menuTitle.Draw();
             copyright.Draw();

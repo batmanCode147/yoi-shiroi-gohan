@@ -31,7 +31,7 @@ namespace YoiShiroiGohan
 
         public SoundItem(string path, float volume, bool loop)
         {
-            Volume = volume;
+            Volume = MathHelper.Lerp(0, volume, Globals.MASTER_VOLUME);
             IsLooping = loop;
             Sound = Globals.Content.Load<SoundEffect>(path);
             SetSoundSettings();

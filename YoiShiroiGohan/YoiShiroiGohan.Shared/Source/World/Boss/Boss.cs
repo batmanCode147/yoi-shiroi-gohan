@@ -36,7 +36,8 @@ namespace YoiShiroiGohan
         Level1,
         Level2,
         Level3,
-        Dead
+        Dead,
+        Hit
     }
 
     public class Boss : ICollidable
@@ -47,6 +48,8 @@ namespace YoiShiroiGohan
         private SoundItem fly_sound;
         private SoundItem power_sound;
         private SoundItem die_sound;
+        private SoundItem bullet_sound;
+        private SoundItem bomb_sound;
 
         private Vector2 position;
         private Vector2 dimension;
@@ -56,7 +59,19 @@ namespace YoiShiroiGohan
         private float speed = 3f;
         private float amplitute = 6f;
 
-        public Rectangle Bounds { get { return new Rectangle((int)position.X, (int)position.Y, (int)dimension.X, (int)dimension.Y); } }
+        public Rectangle Bounds
+        {
+            get
+            {
+                int hitboxOffset = 30;
+                int x = (int)position.X + hitboxOffset;
+                int y = (int)position.Y + hitboxOffset;
+                int width = (int)dimension.X - hitboxOffset * 2;
+                int height = (int)dimension.Y - hitboxOffset * 2;
+                return new Rectangle(x, y, width, height);
+            }
+            set {; }
+        }
 
         public BossAttack CurrentAttack { get; private set; }
         public BossState CurrentState { get; private set; }
@@ -82,11 +97,15 @@ namespace YoiShiroiGohan
         public int MaxHealth { get; set; } = Globals.BOSS_HEALTH;
         public int Health { get; set; }
 
+        //private Hitbox hitbox;
+
         public Boss(Vector2 position, Vector2 dimension)
         {
             fly_sound = new SoundItem("Audio\\fly_sound", 0.5f, false);
             power_sound = new SoundItem("Audio\\boss_power", 0.5f, false);
             die_sound = new SoundItem("Audio\\boss_die", 1f, false);
+            bullet_sound = new SoundItem("Audio\\player_shoot", 0.02f, false);
+            bomb_sound = new SoundItem("Audio\\boss_bullet", 0.1f, false);
 
             animationManager = new AnimationManager();
             animation = new Animation("Images\\boss_sprite_sheet", dimension, 100f, true);
@@ -102,11 +121,12 @@ namespace YoiShiroiGohan
             bullets = new List<ICollidable>();
 
             Health = MaxHealth;
+
+            //hitbox = new Hitbox("Images\\hitbox", Bounds);
         }
 
         public void Update()
         {
-            Console.WriteLine("Boss Health: " + Health);
             UpdateBossState();
 
             if (IsAlive)
@@ -141,11 +161,13 @@ namespace YoiShiroiGohan
 
             prevPos += velocity;
             position = prevPos;
+            //hitbox.position = new Vector2(Bounds.X, Bounds.Y);
         }
 
         public void Draw()
         {
             animationManager.Draw(position);
+            //hitbox.Draw();
 
             foreach (var b in bombs)
             {
@@ -166,6 +188,9 @@ namespace YoiShiroiGohan
         {
             switch (CurrentState)
             {
+                case BossState.Hit:
+                    animationManager.PlayAnimation(animation, Anim.Hit);
+                    break;
                 case BossState.Level1:
                     animationManager.PlayAnimation(animation, Anim.Idle);
                     break;
@@ -294,6 +319,7 @@ namespace YoiShiroiGohan
 
         private void GetBack()
         {
+            // TODO: make this pretty(BERNI!)
             velocity = Vector2.Zero;
 
             if (prevPos.X > startPos.X)
@@ -315,7 +341,7 @@ namespace YoiShiroiGohan
         #region Events
         public void OnCollision()
         {
-            //TODO: make this useful
+            CurrentState = BossState.Hit;
         }
 
         private void OnDie()
@@ -354,7 +380,10 @@ namespace YoiShiroiGohan
             );
 
             if (bombs.Count < 1)
+            {
                 bombs.Add(bomb);
+                bomb_sound.PlaySound();
+            }
         }
 
         private void ShootBullets()
@@ -367,7 +396,10 @@ namespace YoiShiroiGohan
             );
 
             if (bullets.Count < 1)
+            {
                 bullets.Add(bullet);
+                bullet_sound.PlaySound();
+            }
         }
     }
     #endregion

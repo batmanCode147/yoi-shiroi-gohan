@@ -57,7 +57,7 @@ namespace YoiShiroiGohan
 
             // Powerups
             powerup = new PowerUp("Images\\powerup_ricebowl", 
-                        new Vector2(Globals.WindowWidth + 300, Globals.random.Next(100, Globals.WindowHeight-100)),
+                        new Vector2(Globals.WindowWidth + 300, Globals.random.Next(100, Globals.WindowHeight-150)),
                         new Vector2(60, 60),
                         Powerup.BigGun
             );
